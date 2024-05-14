@@ -1,5 +1,16 @@
+import os
+import webbrowser
+import requests
 import streamlit as st
 from langchain.llms import OpenAI
+
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+st.set_page_config(layout="wide")
+st.image('NAU_logo.png', width=600)
+st.header('Department of Global Languages and Cultures', divider='rainbow')
+new_title = '<p style="font-family:sans-serif; color:Green; font-size: 30px;">Welcome to the Chinese Program!</p>'
+st.markdown(new_title, unsafe_allow_html=True)
+
 
 st.title('🦜🔗 Quickstart App')
 
@@ -11,8 +22,4 @@ def generate_response(input_text):
 
 with st.form('my_form'):
   text = st.text_area('Enter text:', 'What are the three key pieces of advice for learning how to code?')
-  submitted = st.form_submit_button('Submit')
-  if not openai_api_key.startswith('sk-'):
-    st.warning('Please enter your OpenAI API key!', icon='⚠')
-  if submitted and openai_api_key.startswith('sk-'):
-    generate_response(text)
+  generate_response(text)
