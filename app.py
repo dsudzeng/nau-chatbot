@@ -14,7 +14,7 @@ st.markdown(new_title, unsafe_allow_html=True)
 st.title('🦜🔗 Chatbot')
 
 def generate_response(input_text):
-  llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+  llm = OpenAI(temperature=0.7)
   st.info(llm(input_text))
 
 text = st.text_area('Enter text:', 'What are the three key pieces of advice for learning how to code?')
